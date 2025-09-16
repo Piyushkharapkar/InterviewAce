@@ -19,10 +19,10 @@ The application simulates a real interview environment, allowing users to build 
 
 ### Backend (Spring Boot)
 
-  - **Framework:** Spring Boot 3
-  - **Language:** Java 17+
+  - **Framework:** Spring Boot 
+  - **Language:** Java 21
   - **API:** RESTful APIs
-  - **Database:** MySQL (or any other relational database)
+  - **Database:** MySQL 
   - **ORM:** Spring Data JPA
   - **Security:** Spring Security with JWT
   - **Web Client:** Spring WebFlux (for non-blocking API calls)
@@ -54,7 +54,7 @@ The application simulates a real interview environment, allowing users to build 
 
 1.  Clone the repository:
     ```sh
-    git clone https://github.com/your-username/interviewace.git
+    git clone https://github.com/Piyushkharapkar/interviewace.git
     cd interviewace/backend
     ```
 2.  Configure your `application.properties` file:
