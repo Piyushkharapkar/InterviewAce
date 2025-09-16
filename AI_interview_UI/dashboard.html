@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - InterviewAce</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+        }
+        .btn-gradient {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        }
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #5855eb, #7c3aed);
+            transform: translateY(-1px);
+        }
+        .slide-in {
+            animation: slideIn 0.6s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 min-h-screen">
+    <!-- Header -->
+    <header class="bg-gray-800 border-b border-gray-700">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="./dashboard.html" class="text-2xl font-bold text-white">InterviewAce</a>
+                <div class="flex items-center space-x-4">
+                    <span id="username-display" class="text-gray-300">Welcome</span>
+                    <div class="w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center">
+                        <span id="user-initial" class="text-white text-sm font-semibold"></span>
+                    </div>
+                     <button id="logout-btn" class="text-sm text-gray-400 hover:text-white transition-colors duration-200">Logout</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Welcome Section -->
+        <div class="text-center mb-12 slide-in">
+            <h2 class="text-3xl font-bold text-white mb-4">User Dashboard</h2>
+            <p class="text-gray-400 text-lg">Ready to practice your interview skills? Start a new session below.</p>
+        </div>
+
+        <!-- Main Action Card -->
+        <div class="bg-gray-800 rounded-2xl border border-gray-700 p-8 text-center card-hover transition-all duration-300 slide-in" style="animation-delay: 0.1s;">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-indigo-600 rounded-full mb-6">
+                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-4">Start New Interview</h3>
+            <p class="text-gray-400 mb-8 max-w-md mx-auto">Get personalized interview questions, instant feedback, and build the confidence you need to land your dream job.</p>
+            <a href="./interview.html" class="btn-gradient text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 inline-block text-lg">
+                Begin Practice Session
+            </a>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+            <div class="bg-gray-800 rounded-xl border border-gray-700 p-6 text-center slide-in" style="animation-delay: 0.2s;">
+                <p class="text-2xl font-bold text-white">5</p>
+                <p class="text-gray-400 text-sm">Sessions Completed</p>
+            </div>
+            <div class="bg-gray-800 rounded-xl border border-gray-700 p-6 text-center slide-in" style="animation-delay: 0.3s;">
+                <p class="text-2xl font-bold text-white">8.2/10</p>
+                <p class="text-gray-400 text-sm">Average Score</p>
+            </div>
+            <div class="bg-gray-800 rounded-xl border border-gray-700 p-6 text-center slide-in" style="animation-delay: 0.4s;">
+                <p class="text-2xl font-bold text-white">Java</p>
+                <p class="text-gray-400 text-sm">Current Focus</p>
+            </div>
+        </div>
+
+        <!-- Previous Sessions -->
+        <div class="mt-12 slide-in" style="animation-delay: 0.5s;">
+            <h3 class="text-xl font-bold text-white mb-6">Recent Sessions</h3>
+            <div class="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden">
+                <div class="p-4 border-b border-gray-700">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-white font-medium">Java Full Stack Interview</p>
+                            <p class="text-gray-400 text-sm">Score: 8.5/10 • 2 days ago</p>
+                        </div>
+                        <span class="px-3 py-1 bg-green-600 text-white text-sm rounded-full">Completed</span>
+                    </div>
+                </div>
+                <div class="p-4 border-b border-gray-700">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-white font-medium">Spring Boot Technical</p>
+                            <p class="text-gray-400 text-sm">Score: 7.8/10 • 5 days ago</p>
+                        </div>
+                        <span class="px-3 py-1 bg-green-600 text-white text-sm rounded-full">Completed</span>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-white font-medium">System Design Basics</p>
+                            <p class="text-gray-400 text-sm">Score: 8.9/10 • 1 week ago</p>
+                        </div>
+                        <span class="px-3 py-1 bg-green-600 text-white text-sm rounded-full">Completed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="./dashboard.js" defer></script>
+</body>
+</html>

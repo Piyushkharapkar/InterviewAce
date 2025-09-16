@@ -1,0 +1,18 @@
+# Explicitly ignore the project folders you don't want to push
+BookManagementApp/
+LearningRESTApis/
+SpringBootDemo/
+
+# Ignore other common development files and folders
+# This is a good practice for any project
+target/         # Java build output
+.idea/          # IntelliJ IDEA configuration files
+.vscode/        # Visual Studio Code configuration files
+.project
+.classpath
+.settings/
+*.jar
+*.war
+
+# Ignore sensitive files (e.g., credentials)
+application.properties

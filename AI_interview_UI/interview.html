@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Session - InterviewAce</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        }
+
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #5855eb, #7c3aed);
+            transform: translateY(-1px);
+        }
+
+        .input-focus:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .slide-in {
+            animation: slideIn 0.6s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900">
+    <!-- Navbar -->
+    <nav class="bg-gray-800 border-b border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="./dashboard.html" class="text-2xl font-bold text-white">InterviewAce</a>
+                <button id="logout-btn"
+                    class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-300">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="py-10">
+        <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Interview Setup Form (Initially Visible) -->
+            <div id="setup-container"
+                class="bg-gray-800 border border-gray-700 p-8 rounded-2xl shadow-2xl card-hover transition-all duration-300 slide-in">
+                <h2 class="text-3xl font-bold text-white mb-2">Interview Setup</h2>
+                <p class="text-gray-400 mb-8">Describe the role you want to practice for.</p>
+                <form id="interview-setup-form">
+
+                    <!-- Domain Input -->
+                    <div class="mb-6">
+                        <label for="domain" class="block text-gray-300 text-sm font-semibold mb-3">Domain / Job
+                            Title:</label>
+                        <input type="text" id="domain" name="domain"
+                            placeholder="e.g., Backend Developer, Data Scientist"
+                            class="w-full py-3 px-4 bg-gray-700 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none input-focus transition-all duration-200"
+                            required>
+                    </div>
+
+                    <!-- Skills Input -->
+                    <div class="mb-6">
+                        <label for="skills" class="block text-gray-300 text-sm font-semibold mb-3">Key Skills
+                            (comma-separated):</label>
+                        <input type="text" id="skills" name="skills" placeholder="e.g., Java, Spring Boot, Python, SQL"
+                            class="w-full py-3 px-4 bg-gray-700 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none input-focus transition-all duration-200"
+                            required>
+                    </div>
+
+                    <!-- Experience Level Input -->
+                    <div>
+                        <label for="experience" class="block text-gray-300 text-sm font-semibold mb-3">Experience
+                            Level:</label>
+                        <input type="number" id="experience" name="experience" placeholder="e.g., 3"
+                            class="w-full py-3 px-4 bg-gray-700 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none input-focus transition-all duration-200"
+                            required>
+                    </div>
+
+                    <!-- ** THIS IS THE FIX ** The missing message div -->
+                    <div id="message" class="text-sm mb-4 text-center text-red-400 min-h-[20px]"></div>
+
+                    <button type="submit"
+                        class="w-full btn-gradient text-white font-semibold py-3 px-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800 transition-all duration-300">
+                        Start Interview
+                    </button>
+                </form>
+            </div>
+
+            <!-- Question Display Area (Initially Hidden) -->
+            <div id="question-container" class="hidden">
+                <div class="bg-gray-800 border border-gray-700 p-8 rounded-2xl shadow-2xl text-center slide-in">
+                    <div class="mb-6">
+                        <p id="question-counter" class="text-sm font-semibold text-indigo-400 mb-2">Question 1 / 5</p>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div id="progress-bar" class="btn-gradient h-2 rounded-full transition-all duration-300"
+                                style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <h2 id="question-text"
+                        class="text-2xl font-bold text-white mb-8 min-h-[100px] leading-relaxed flex items-center justify-center">
+                        <!-- Content will be populated by JS -->
+                    </h2>
+
+                    <div id="answer-area"
+                        class="my-8 p-6 bg-gray-700 rounded-xl border border-gray-600 min-h-[60px] flex justify-center items-center">
+                        <!-- Recording controls will be populated by JS -->
+                    </div>
+
+                    <div id="question-message" class="text-sm mb-4 text-center text-red-400 min-h-[20px]"></div>
+
+                    <div id="main-action-btn-container" class="min-h-[52px]">
+                        <!-- Stop recording button will be populated by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- End of Interview Screen (Initially Hidden) -->
+            <div id="end-container"
+                class="hidden bg-gray-800 border border-gray-700 p-8 rounded-2xl shadow-2xl text-center slide-in">
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-green-600 rounded-full mb-6">
+                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+                <h2 class="text-3xl font-bold text-white mb-4">Interview Complete!</h2>
+                <p class="text-gray-400 mb-8">You've answered all the questions. Well done!</p>
+                <div class="space-y-3">
+                    <a id="view-results-btn" href="#"
+                        class="block btn-gradient text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:transform hover:-translate-y-1">
+                        View Feedback Report
+                    </a>
+                    <button id="restart-interview-btn"
+                        class="block w-full bg-gray-700 hover:bg-gray-600 text-gray-300 font-semibold py-3 px-6 rounded-xl transition-colors duration-300">
+                        Start Another Interview
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="interview.js"></script>
+</body>
+
+</html>
